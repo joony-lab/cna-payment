@@ -12,10 +12,17 @@ public class Payment {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private int price;
-    private int orderId;
+    private Long orderId;
 
     @PrePersist
     public void onPrePersist(){
+
+        try {
+            Thread.currentThread().sleep((long) (3000));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         Paid paid = new Paid();
         BeanUtils.copyProperties(this, paid);
         paid.publishAfterCommit();
@@ -39,11 +46,11 @@ public class Payment {
         this.price = price;
     }
 
-    public int getOrderId() {
+    public Long getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(Long orderId) {
         this.orderId = orderId;
     }
 
