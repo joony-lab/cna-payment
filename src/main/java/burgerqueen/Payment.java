@@ -18,7 +18,7 @@ public class Payment {
     public void onPrePersist(){
 
         try {
-            Thread.currentThread().sleep((long) (400 + Math.random() * 300));
+            Thread.currentThread().sleep((long) (100 + Math.random() * 300));
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
